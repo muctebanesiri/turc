@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* ── reset & base ── */
     *,
     *::before,
     *::after {
@@ -33,67 +34,67 @@
       --radius-sm: 12px;
       --shadow: 0 24px 80px rgba(0, 0, 0, .60);
       --transition: 0.25s cubic-bezier(.25, .46, .45, .94);
+      --font: 'Inter', 'Vazirmatn', 'Tahoma', ui-sans-serif, system-ui, -apple-system, sans-serif;
     }
     html {
       scroll-behavior: smooth;
     }
     body {
       min-height: 100vh;
-      font-family: 'Inter', 'Vazirmatn', 'Tahoma', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-family: var(--font);
       color: var(--text);
       background: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px 16px;
+      padding: 20px 16px;
       position: relative;
       overflow-x: hidden;
+      line-height: 1.5;
     }
     html[lang="fa"] body {
       font-family: 'Vazirmatn', 'Inter', 'Tahoma', ui-sans-serif, system-ui, sans-serif;
     }
+
+    /* ── animated background ── */
     .bg-canvas {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
-      background:
-        radial-gradient(1200px 700px at 10% 5%, rgba(124, 92, 255, .18), transparent 60%),
-        radial-gradient(1000px 600px at 90% 10%, rgba(34, 211, 238, .12), transparent 55%),
-        linear-gradient(180deg, #05060a 0%, #07090f 100%);
     }
     .bg-canvas .orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(90px);
-      opacity: .20;
-      animation: floatOrb 18s ease-in-out infinite alternate;
+      opacity: .18;
+      animation: floatOrb 20s ease-in-out infinite alternate;
     }
     .bg-canvas .orb:nth-child(1) {
-      width: 500px;
-      height: 500px;
+      width: 600px;
+      height: 600px;
       background: #7c5cff;
-      top: -10%;
-      left: -8%;
-      animation-duration: 22s;
+      top: -15%;
+      left: -10%;
+      animation-duration: 24s;
     }
     .bg-canvas .orb:nth-child(2) {
-      width: 400px;
-      height: 400px;
+      width: 500px;
+      height: 500px;
       background: #22d3ee;
-      bottom: -12%;
-      right: -6%;
-      animation-duration: 26s;
+      bottom: -15%;
+      right: -10%;
+      animation-duration: 28s;
       animation-delay: -6s;
     }
     .bg-canvas .orb:nth-child(3) {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       background: #a78bfa;
       top: 40%;
-      right: 20%;
-      animation-duration: 20s;
+      right: 15%;
+      animation-duration: 22s;
       animation-delay: -10s;
       opacity: .10;
     }
@@ -102,15 +103,17 @@
         transform: translate(0, 0) scale(1);
       }
       33% {
-        transform: translate(30px, -40px) scale(1.1);
+        transform: translate(40px, -50px) scale(1.1);
       }
       66% {
-        transform: translate(-20px, 30px) scale(.95);
+        transform: translate(-30px, 40px) scale(.95);
       }
       100% {
-        transform: translate(15px, -15px) scale(1.05);
+        transform: translate(20px, -20px) scale(1.05);
       }
     }
+
+    /* ── particles ── */
     .particles {
       position: fixed;
       inset: 0;
@@ -120,62 +123,59 @@
     }
     .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, .20);
+      background: rgba(255, 255, 255, .15);
       animation: drift linear infinite;
     }
     .particle:nth-child(1) {
+      width: 3px;
+      height: 3px;
       left: 10%;
       top: 20%;
       animation-duration: 14s;
-      animation-delay: 0s;
-      width: 3px;
-      height: 3px;
     }
     .particle:nth-child(2) {
+      width: 5px;
+      height: 5px;
       left: 25%;
       top: 60%;
       animation-duration: 18s;
       animation-delay: -3s;
-      width: 5px;
-      height: 5px;
-      opacity: .15;
+      opacity: .12;
     }
     .particle:nth-child(3) {
+      width: 4px;
+      height: 4px;
       left: 55%;
       top: 15%;
       animation-duration: 16s;
       animation-delay: -6s;
-      width: 4px;
-      height: 4px;
     }
     .particle:nth-child(4) {
+      width: 6px;
+      height: 6px;
       left: 70%;
       top: 70%;
       animation-duration: 20s;
       animation-delay: -9s;
-      width: 6px;
-      height: 6px;
-      opacity: .10;
+      opacity: .08;
     }
     .particle:nth-child(5) {
+      width: 3px;
+      height: 3px;
       left: 85%;
       top: 30%;
       animation-duration: 13s;
       animation-delay: -4s;
-      width: 3px;
-      height: 3px;
     }
     .particle:nth-child(6) {
+      width: 5px;
+      height: 5px;
       left: 40%;
       top: 80%;
       animation-duration: 22s;
       animation-delay: -7s;
-      width: 5px;
-      height: 5px;
-      opacity: .12;
+      opacity: .10;
     }
     @keyframes drift {
       0% {
@@ -199,51 +199,55 @@
         opacity: .1;
       }
     }
+
+    /* ── wrap ── */
     .wrap {
-      width: min(1020px, 100%);
+      width: min(1040px, 100%);
       position: relative;
       z-index: 1;
     }
+
+    /* ── topbar ── */
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      user-select: none;
       text-decoration: none;
       color: inherit;
+      user-select: none;
     }
-    .brand-logo {
+    .brand-icon {
       width: 48px;
       height: 48px;
-      border-radius: 16px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 12px 40px var(--accent-glow);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, .15);
+      border: 1px solid rgba(255, 255, 255, .12);
       transition: transform var(--transition), box-shadow var(--transition);
     }
-    .brand-logo:hover {
+    .brand-icon:hover {
       transform: scale(1.04);
       box-shadow: 0 16px 56px var(--accent-glow);
     }
-    .brand-logo::before {
+    .brand-icon::before {
       content: '';
       position: absolute;
       inset: -50%;
-      background: conic-gradient(from 180deg, transparent, rgba(255, 255, 255, .30), transparent);
+      background: conic-gradient(from 180deg, transparent, rgba(255, 255, 255, .25), transparent);
       animation: spin 8s linear infinite;
     }
-    .brand-logo::after {
+    .brand-icon::after {
       content: 'T';
       position: absolute;
       inset: 0;
@@ -255,7 +259,6 @@
       color: #fff;
       text-shadow: 0 2px 12px rgba(0, 0, 0, .30);
       z-index: 1;
-      letter-spacing: 0;
     }
     @keyframes spin {
       to {
@@ -275,8 +278,14 @@
       font-size: 13px;
       font-weight: 400;
     }
-    .topbar-badge {
-      padding: 8px 18px;
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      padding: 6px 18px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--surface);
@@ -288,9 +297,8 @@
       align-items: center;
       gap: 8px;
       white-space: nowrap;
-      letter-spacing: .2px;
     }
-    .topbar-badge .dot-indicator {
+    .badge .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -311,16 +319,11 @@
     }
     .lang-switcher {
       display: flex;
-      gap: 6px;
+      gap: 4px;
       align-items: center;
-      margin-left: auto;
-    }
-    html[dir="rtl"] .lang-switcher {
-      margin-left: 0;
-      margin-right: auto;
     }
     .lang-btn {
-      background: var(--surface);
+      background: transparent;
       border: 1px solid var(--border);
       color: var(--text-muted);
       padding: 4px 12px;
@@ -344,28 +347,28 @@
       box-shadow: 0 4px 16px var(--accent-glow);
     }
     @media (max-width: 700px) {
-      .lang-switcher {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-        justify-content: flex-start;
-      }
-      html[dir="rtl"] .lang-switcher {
-        justify-content: flex-start;
-      }
       .topbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+      }
+      .topbar-right {
+        justify-content: flex-start;
+        width: 100%;
+      }
+      .badge {
+        flex: 1;
+        justify-content: center;
       }
     }
+
+    /* ── card ── */
     .card {
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+      background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .01));
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       overflow: hidden;
       position: relative;
-      backdrop-filter: blur(2px);
       transition: border-color var(--transition);
     }
     .card:hover {
@@ -378,38 +381,36 @@
       pointer-events: none;
       border-radius: var(--radius);
       background:
-        radial-gradient(600px 200px at 15% 0%, rgba(124, 92, 255, .15), transparent 60%),
-        radial-gradient(500px 180px at 85% 5%, rgba(34, 211, 238, .10), transparent 55%);
+        radial-gradient(600px 200px at 15% 0%, rgba(124, 92, 255, .12), transparent 60%),
+        radial-gradient(500px 180px at 85% 5%, rgba(34, 211, 238, .08), transparent 55%);
       opacity: .8;
     }
     .card-inner {
       position: relative;
-      padding: 36px 28px 28px;
+      padding: 40px 32px 32px;
       display: grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 28px;
+      gap: 32px;
       align-items: start;
     }
     @media (max-width: 880px) {
       .card-inner {
         grid-template-columns: 1fr;
-        padding: 28px 18px 18px;
-        gap: 22px;
+        padding: 28px 20px 20px;
+        gap: 24px;
       }
     }
     @media (max-width: 480px) {
       .card-inner {
         padding: 20px 14px 14px;
+        gap: 18px;
       }
     }
-    .headline-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+
+    /* ── left column ── */
     .headline {
       margin: 0;
-      font-size: 52px;
+      font-size: 54px;
       font-weight: 800;
       line-height: 1.02;
       letter-spacing: -.8px;
@@ -417,7 +418,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: 0 10px 40px rgba(124, 92, 255, .15);
     }
     @media (max-width: 600px) {
       .headline {
@@ -430,105 +430,97 @@
       }
     }
     .subhead {
-      margin: 6px 0 0;
+      margin: 10px 0 0;
       color: var(--text-muted);
       font-size: 17px;
       line-height: 1.6;
-      max-width: 50ch;
-      font-weight: 400;
+      max-width: 48ch;
     }
     .subhead strong {
       color: var(--text);
       font-weight: 600;
     }
-    .lang-message {
-      margin-top: 22px;
+    .message-box {
+      margin-top: 24px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       background: var(--surface);
-      padding: 18px 20px;
-      backdrop-filter: blur(4px);
-      transition: border-color var(--transition);
+      padding: 16px 20px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 14px;
+      transition: border-color var(--transition);
     }
-    .lang-message:hover {
+    .message-box:hover {
       border-color: var(--border-hover);
     }
-    .lang-message .dot-big {
-      width: 12px;
-      height: 12px;
+    .message-box .icon {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 4px 20px var(--accent-glow);
       flex-shrink: 0;
     }
-    .lang-message .msg-text {
-      font-size: 16px;
+    .message-box .text {
+      font-size: 15px;
       line-height: 1.5;
       color: var(--text);
     }
-    .lang-message .msg-text small {
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-    .side-panel {
-      padding: 20px 20px 18px;
+
+    /* ── side panel ── */
+    .panel {
+      padding: 22px 22px 20px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      background: rgba(0, 0, 0, .30);
+      background: rgba(0, 0, 0, .35);
       backdrop-filter: blur(8px);
-      position: relative;
       transition: border-color var(--transition);
     }
-    .side-panel:hover {
+    .panel:hover {
       border-color: var(--border-hover);
     }
-    .side-panel .label {
-      font-size: 12px;
-      font-weight: 600;
+    .panel .label {
+      font-size: 11px;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: .5px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      letter-spacing: .6px;
     }
-    .side-panel .domain-name {
-      font-size: 26px;
+    .panel .domain {
+      font-size: 28px;
       font-weight: 800;
-      letter-spacing: -.2px;
-      margin: 6px 0 4px;
+      letter-spacing: -.3px;
+      margin: 4px 0 2px;
       word-break: break-word;
       background: linear-gradient(135deg, #fff, var(--accent2));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .side-panel .price-hint {
+    .panel .hint {
       color: var(--text-muted);
       font-size: 14px;
       line-height: 1.4;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
+
+    /* ── form ── */
     .form-group {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .form-group label {
       display: block;
       font-size: 12.5px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-muted);
-      letter-spacing: .2px;
       margin-bottom: 5px;
     }
-    .form-group label .required {
+    .form-group label .req {
       color: #f87171;
       margin-left: 2px;
     }
-    html[dir="rtl"] .form-group label .required {
+    html[dir="rtl"] .form-group label .req {
       margin-left: 0;
       margin-right: 2px;
     }
@@ -539,7 +531,7 @@
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, .04);
       color: var(--text);
-      padding: 11px 14px;
+      padding: 12px 14px;
       outline: none;
       font-size: 14px;
       font-family: inherit;
@@ -555,7 +547,7 @@
       color: var(--text-dim);
     }
     .form-group textarea {
-      min-height: 80px;
+      min-height: 72px;
       resize: vertical;
     }
     .form-hint {
@@ -563,6 +555,8 @@
       color: var(--text-dim);
       margin-top: 4px;
     }
+
+    /* ── buttons ── */
     .actions {
       display: flex;
       flex-direction: column;
@@ -574,7 +568,7 @@
       border: none;
       cursor: pointer;
       border-radius: var(--radius-sm);
-      padding: 13px 18px;
+      padding: 14px 20px;
       font-weight: 600;
       font-size: 15px;
       letter-spacing: .2px;
@@ -584,9 +578,8 @@
       gap: 10px;
       text-decoration: none;
       user-select: none;
-      text-align: center;
       font-family: inherit;
-      transition: transform .12s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+      transition: transform .12s ease, box-shadow .3s ease, background .3s ease, border-color .3s ease;
       position: relative;
     }
     .btn:active {
@@ -596,7 +589,7 @@
       background: linear-gradient(135deg, var(--accent), #6d4bff);
       color: #fff;
       box-shadow: 0 12px 40px var(--accent-glow);
-      border: 1px solid rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .10);
     }
     .btn-primary:hover {
       box-shadow: 0 16px 56px var(--accent-glow);
@@ -606,20 +599,18 @@
     .btn-primary svg {
       flex-shrink: 0;
     }
-    .btn-primary svg path {
-      stroke: #fff;
-      fill: #fff;
-    }
     .btn-primary .wa-icon {
       width: 20px;
       height: 20px;
+    }
+    .btn-primary .wa-icon path {
+      stroke: #fff;
       fill: #fff;
     }
     .btn-ghost {
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      transition: border-color var(--transition), background var(--transition), transform var(--transition);
     }
     .btn-ghost:hover {
       border-color: var(--border-hover);
@@ -629,28 +620,47 @@
     .btn-ghost svg {
       flex-shrink: 0;
     }
-    .fineprint {
-      margin-top: 14px;
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.5;
+    .btn .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, .3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    .btn.loading .spinner {
+      display: inline-block;
+    }
+    .btn.loading .btn-text {
+      opacity: .7;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ── footer meta ── */
+    .meta {
+      margin-top: 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
+      color: var(--text-dim);
+      font-size: 13px;
     }
     .kbd {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      padding: 3px 12px;
+      padding: 2px 12px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text-muted);
       font-size: 13px;
-      display: inline-block;
-      letter-spacing: .2px;
     }
-    .trust-row {
+    .trust {
       display: flex;
       align-items: center;
       gap: 14px;
@@ -668,10 +678,12 @@
     }
     .trust-item svg {
       flex-shrink: 0;
-      opacity: .6;
+      opacity: .5;
     }
+
+    /* ── footer ── */
     .footer {
-      margin-top: 16px;
+      margin-top: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -681,29 +693,35 @@
       padding: 0 4px;
       flex-wrap: wrap;
     }
+
+    /* ── toast ── */
     .toast {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: rgba(0, 0, 0, .85);
-      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, .88);
+      backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 12px 24px;
+      padding: 12px 28px;
       color: var(--text);
       font-size: 14px;
       font-weight: 500;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, .60);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .70);
       opacity: 0;
-      transition: opacity .35s ease, transform .35s ease;
+      transition: opacity .4s ease, transform .4s ease;
       z-index: 999;
       pointer-events: none;
+      text-align: center;
+      max-width: 90vw;
     }
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
+
+    /* ── utilities ── */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -714,10 +732,31 @@
       clip: rect(0, 0, 0, 0);
       border: 0;
     }
+    @media (max-width: 480px) {
+      .badge {
+        font-size: 12px;
+        padding: 5px 12px;
+      }
+      .lang-btn {
+        font-size: 11px;
+        padding: 3px 10px;
+      }
+      .panel .domain {
+        font-size: 22px;
+      }
+      .btn {
+        font-size: 14px;
+        padding: 12px 16px;
+      }
+      .message-box .text {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
 
+  <!-- background -->
   <div class="bg-canvas" aria-hidden="true">
     <div class="orb"></div>
     <div class="orb"></div>
@@ -732,57 +771,65 @@
     <div class="particle"></div>
   </div>
 
+  <!-- toast -->
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
+  <!-- main -->
   <div class="wrap">
+
+    <!-- topbar -->
     <header class="topbar">
       <a class="brand" href="#" aria-label="turc.ir">
-        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-icon" aria-hidden="true"></div>
         <div class="brand-text">
           <h1>turc.ir</h1>
           <p data-i18n="tagline">Premium domain for sale</p>
         </div>
       </a>
-      <div class="topbar-badge">
-        <span class="dot-indicator" aria-hidden="true"></span>
-        <span data-i18n="badge">Available now</span>
-      </div>
-      <div class="lang-switcher" role="group" aria-label="Language switcher">
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="tr">TR</button>
-        <button class="lang-btn" data-lang="fa">FA</button>
+      <div class="topbar-right">
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-i18n="badge">Available now</span>
+        </div>
+        <div class="lang-switcher" role="group" aria-label="Language switcher">
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button class="lang-btn" data-lang="tr" aria-label="Türkçe">TR</button>
+          <button class="lang-btn" data-lang="fa" aria-label="فارسی">FA</button>
+        </div>
       </div>
     </header>
 
+    <!-- card -->
     <main class="card">
       <div class="card-inner">
+
+        <!-- left -->
         <section>
-          <div class="headline-wrap">
-            <h1 class="headline" data-i18n="headline">This Domain<br />Is For Sale</h1>
-            <p class="subhead" data-i18n="subhead">
-              Fill in the form below, then tap <strong>WhatsApp</strong> to send your offer instantly.
-            </p>
-          </div>
-          <div class="lang-message">
-            <span class="dot-big" aria-hidden="true"></span>
-            <span class="msg-text" data-i18n="message">
+          <h1 class="headline" data-i18n="headline">This Domain<br />Is For Sale</h1>
+          <p class="subhead" data-i18n="subhead">
+            Fill in the form below, then tap <strong>WhatsApp</strong> to send your offer instantly.
+          </p>
+          <div class="message-box">
+            <span class="icon" aria-hidden="true"></span>
+            <span class="text" data-i18n="message">
               This domain is for sale. Send your offer via WhatsApp using the form.
             </span>
           </div>
         </section>
 
-        <aside class="side-panel">
+        <!-- right / panel -->
+        <aside class="panel">
           <div class="label" data-i18n="domain_label">Domain</div>
-          <div class="domain-name">turc.ir</div>
-          <div class="price-hint" data-i18n="price_hint">Pricing by offer &bull; Private negotiations welcome.</div>
+          <div class="domain">turc.ir</div>
+          <div class="hint" data-i18n="price_hint">Pricing by offer &bull; Private negotiations welcome.</div>
 
-          <form class="form" id="offerForm" novalidate>
+          <form class="form" id="offerForm" novalidate autocomplete="on">
             <div class="form-group">
-              <label for="name" data-i18n="label_name">Your name <span class="required">*</span></label>
+              <label for="name" data-i18n="label_name">Your name <span class="req">*</span></label>
               <input id="name" name="name" type="text" placeholder="e.g. John Doe" autocomplete="name" required />
             </div>
             <div class="form-group">
-              <label for="offer" data-i18n="label_offer">Offer amount <span class="required">*</span></label>
+              <label for="offer" data-i18n="label_offer">Offer amount <span class="req">*</span></label>
               <input id="offer" name="offer" type="text" placeholder="e.g. 5,000 USD" required />
               <div class="form-hint" data-i18n="offer_hint">Enter your currency and amount.</div>
             </div>
@@ -802,7 +849,8 @@
                 <path d="M12 21a9 9 0 1 0-7.7-4.4L3 21l4.6-1.2A9 9 0 0 0 12 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                 <path d="M9.2 8.6c.2-.5.5-.5.7-.5h.5c.2 0 .4 0 .6.5.2.5.7 1.7.8 1.8.1.1.1.3 0 .5-.1.2-.2.3-.3.4-.1.1-.2.2-.1.4.1.2.5.9 1.1 1.4.7.6 1.3.8 1.5.9.2.1.3.1.4 0 .1-.1.5-.6.6-.8.1-.2.3-.2.4-.1.2.1 1.3.6 1.5.7.2.1.3.2.3.4 0 .2 0 .9-.4 1.3-.4.4-1 .5-1.4.4-.5-.1-1.9-.7-3.2-2-1.3-1.3-1.9-2.7-2-3.2-.1-.5 0-.9.2-1.2Z" fill="currentColor" />
               </svg>
-              <span data-i18n="wa_button">Send Offer via WhatsApp</span>
+              <span class="btn-text" data-i18n="wa_button">Send Offer via WhatsApp</span>
+              <span class="spinner" aria-hidden="true"></span>
             </button>
             <button class="btn btn-ghost" id="copyBtn" type="button">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -813,13 +861,13 @@
             </button>
           </div>
 
-          <div class="fineprint">
+          <div class="meta">
             <span>📞</span>
             <span class="kbd">+989390247578</span>
             <span style="color:var(--text-dim);font-size:12px;" data-i18n="reply_time">&bull; reply within hours</span>
           </div>
 
-          <div class="trust-row">
+          <div class="trust">
             <span class="trust-item">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               <span data-i18n="trust_secure">Secure transfer</span>
@@ -834,26 +882,30 @@
             </span>
           </div>
         </aside>
+
       </div>
     </main>
 
+    <!-- footer -->
     <footer class="footer">
       <div>&copy; <span id="year"></span> turc.ir &bull; <span data-i18n="footer_rights">All rights reserved</span></div>
       <div>
         <span class="kbd" style="font-size:12px;padding:2px 12px;" data-i18n="footer_badge">This page is for sale</span>
       </div>
     </footer>
+
   </div>
 
   <script>
     (function() {
       'use strict';
 
+      // ── config ──
       const DOMAIN = 'turc.ir';
-      const PHONE = '989390247578'; // WhatsApp number without '+'
+      const PHONE = '989390247578';
 
       // ── translations ──
-      const translations = {
+      const t = {
         en: {
           tagline: 'Premium domain for sale',
           badge: 'Available now',
@@ -861,9 +913,9 @@
           subhead: 'Fill in the form below, then tap <strong>WhatsApp</strong> to send your offer instantly.',
           message: 'This domain is for sale. Send your offer via WhatsApp using the form.',
           domain_label: 'Domain',
-          price_hint: 'Pricing by offer &bull; Private negotiations welcome.',
-          label_name: 'Your name <span class="required">*</span>',
-          label_offer: 'Offer amount <span class="required">*</span>',
+          price_hint: 'Pricing by offer • Private negotiations welcome.',
+          label_name: 'Your name <span class="req">*</span>',
+          label_offer: 'Offer amount <span class="req">*</span>',
           offer_hint: 'Enter your currency and amount.',
           label_email: 'Email <span style="color:var(--text-dim);font-weight:400;">(optional)</span>',
           label_note: 'Additional note <span style="color:var(--text-dim);font-weight:400;">(optional)</span>',
@@ -882,7 +934,11 @@
           wa_email_label: "Email:",
           wa_note_label: "Note:",
           wa_missing_name: "(please add your name)",
-          wa_missing_amount: "(please add your offer amount)"
+          wa_missing_amount: "(please add your offer amount)",
+          err_name: 'Please enter your name.',
+          err_offer: 'Please enter your offer amount.',
+          copied: 'Copied!',
+          copy_success: 'Copied "{{domain}}" to clipboard.'
         },
         tr: {
           tagline: 'Premium alan adı satışta',
@@ -891,9 +947,9 @@
           subhead: 'Aşağıdaki formu doldurun, ardından teklifinizi anında göndermek için <strong>WhatsApp</strong> \'a dokunun.',
           message: 'Bu alan adı satıştadır. Formu kullanarak WhatsApp\'tan teklifinizi gönderin.',
           domain_label: 'Alan Adı',
-          price_hint: 'Teklifle fiyatlandırma &bull; Özel görüşmelere açığız.',
-          label_name: 'Adınız <span class="required">*</span>',
-          label_offer: 'Teklif miktarı <span class="required">*</span>',
+          price_hint: 'Teklifle fiyatlandırma • Özel görüşmelere açığız.',
+          label_name: 'Adınız <span class="req">*</span>',
+          label_offer: 'Teklif miktarı <span class="req">*</span>',
           offer_hint: 'Para biriminizi ve tutarı girin.',
           label_email: 'E-posta <span style="color:var(--text-dim);font-weight:400;">(isteğe bağlı)</span>',
           label_note: 'Ek not <span style="color:var(--text-dim);font-weight:400;">(isteğe bağlı)</span>',
@@ -912,7 +968,11 @@
           wa_email_label: "E-posta:",
           wa_note_label: "Not:",
           wa_missing_name: "(lütfen adınızı ekleyin)",
-          wa_missing_amount: "(lütfen teklif miktarını ekleyin)"
+          wa_missing_amount: "(lütfen teklif miktarını ekleyin)",
+          err_name: 'Lütfen adınızı girin.',
+          err_offer: 'Lütfen teklif miktarını girin.',
+          copied: 'Kopyalandı!',
+          copy_success: '"{{domain}}" kopyalandı.'
         },
         fa: {
           tagline: 'دامنه ممتاز برای فروش',
@@ -921,9 +981,9 @@
           subhead: 'فرم زیر را پر کنید، سپس روی <strong>WhatsApp</strong> ضربه بزنید تا پیشنهاد خود را فوراً ارسال کنید.',
           message: 'این دامنه برای فروش است. پیشنهاد خود را از طریق WhatsApp با استفاده از فرم ارسال کنید.',
           domain_label: 'دامنه',
-          price_hint: 'قیمت‌گذاری با پیشنهاد &bull; مذاکرات خصوصی پذیرفته می‌شود.',
-          label_name: 'نام شما <span class="required">*</span>',
-          label_offer: 'مبلغ پیشنهاد <span class="required">*</span>',
+          price_hint: 'قیمت‌گذاری با پیشنهاد • مذاکرات خصوصی پذیرفته می‌شود.',
+          label_name: 'نام شما <span class="req">*</span>',
+          label_offer: 'مبلغ پیشنهاد <span class="req">*</span>',
           offer_hint: 'واحد پول و مبلغ خود را وارد کنید.',
           label_email: 'ایمیل <span style="color:var(--text-dim);font-weight:400;">(اختیاری)</span>',
           label_note: 'یادداشت اضافی <span style="color:var(--text-dim);font-weight:400;">(اختیاری)</span>',
@@ -942,14 +1002,18 @@
           wa_email_label: "ایمیل:",
           wa_note_label: "یادداشت:",
           wa_missing_name: "(لطفاً نام خود را وارد کنید)",
-          wa_missing_amount: "(لطفاً مبلغ پیشنهاد را وارد کنید)"
+          wa_missing_amount: "(لطفاً مبلغ پیشنهاد را وارد کنید)",
+          err_name: 'لطفاً نام خود را وارد کنید.',
+          err_offer: 'لطفاً مبلغ پیشنهاد را وارد کنید.',
+          copied: 'کپی شد!',
+          copy_success: '"{{domain}}" کپی شد.'
         }
       };
 
       // ── DOM refs ──
-      const i18nElements = document.querySelectorAll('[data-i18n]');
-      const langBtns = document.querySelectorAll('.lang-btn');
       const htmlRoot = document.getElementById('htmlRoot');
+      const i18nEls = document.querySelectorAll('[data-i18n]');
+      const langBtns = document.querySelectorAll('.lang-btn');
       const nameEl = document.getElementById('name');
       const offerEl = document.getElementById('offer');
       const emailEl = document.getElementById('email');
@@ -958,91 +1022,38 @@
       const copyBtn = document.getElementById('copyBtn');
       const toast = document.getElementById('toast');
 
-      // ── detect language ──
-      function detectLanguage() {
-        const browserLang = navigator.language || navigator.languages?.[0] || 'en';
-        const lang = browserLang.split('-')[0].toLowerCase();
-        if (lang === 'tr') return 'tr';
-        if (lang === 'fa') return 'fa';
-        return 'en';
-      }
-
-      let currentLang = detectLanguage();
-
+      // ── helpers ──
       function clean(s) { return (s ?? '').toString().trim(); }
 
+      function getLang() {
+        const browser = navigator.language || navigator.languages?.[0] || 'en';
+        const code = browser.split('-')[0].toLowerCase();
+        return (code === 'tr' || code === 'fa') ? code : 'en';
+      }
+
+      let currentLang = getLang();
+
       function showToast(text, duration) {
-        duration = duration || 2000;
+        duration = duration || 2200;
         toast.textContent = text;
         toast.classList.add('show');
         clearTimeout(toast._hide);
-        toast._hide = setTimeout(function() {
-          toast.classList.remove('show');
-        }, duration);
+        toast._hide = setTimeout(() => toast.classList.remove('show'), duration);
       }
 
-      // ── build localized WhatsApp message ──
-      function buildMessage() {
-        const t = translations[currentLang] || translations.en;
-        const name = clean(nameEl.value);
-        const offer = clean(offerEl.value);
-        const email = clean(emailEl.value);
-        const extra = clean(msgEl.value);
-
-        const lines = [
-          t.wa_intro.replace('{{domain}}', DOMAIN),
-          '',
-          t.wa_offer_label,
-          t.wa_name_label + ' ' + (name || t.wa_missing_name),
-          t.wa_amount_label + ' ' + (offer || t.wa_missing_amount)
-        ];
-        if (email) lines.push(t.wa_email_label + ' ' + email);
-        if (extra) lines.push(t.wa_note_label + ' ' + extra);
-        return lines.join('\n');
-      }
-
-      // ── send WhatsApp message ──
-      function sendWhatsApp() {
-        const name = clean(nameEl.value);
-        const offer = clean(offerEl.value);
-
-        if (!name) {
-          showToast(currentLang === 'tr' ? 'Lütfen adınızı girin.' :
-            currentLang === 'fa' ? 'لطفاً نام خود را وارد کنید.' :
-            'Please enter your name.', 1800);
-          nameEl.focus();
-          return;
-        }
-        if (!offer) {
-          showToast(currentLang === 'tr' ? 'Lütfen teklif miktarını girin.' :
-            currentLang === 'fa' ? 'لطفاً مبلغ پیشنهاد را وارد کنید.' :
-            'Please enter your offer amount.', 1800);
-          offerEl.focus();
-          return;
-        }
-
-        const message = buildMessage();
-        const url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(message);
-        window.open(url, '_blank');
-      }
-
-      // ── apply translations ──
+      // ── apply language ──
       function applyLanguage(lang) {
-        if (!translations[lang]) lang = 'en';
+        if (!t[lang]) lang = 'en';
         currentLang = lang;
 
         htmlRoot.lang = lang;
         htmlRoot.dir = (lang === 'fa') ? 'rtl' : 'ltr';
 
-        i18nElements.forEach(el => {
+        i18nEls.forEach(el => {
           const key = el.getAttribute('data-i18n');
-          const text = translations[lang]?.[key];
-          if (text !== undefined) {
-            if (text.includes('<')) {
-              el.innerHTML = text;
-            } else {
-              el.textContent = text;
-            }
+          const val = t[lang]?.[key];
+          if (val !== undefined) {
+            el.innerHTML = val;
           }
         });
 
@@ -1051,51 +1062,129 @@
         });
 
         // placeholders
-        const placeholders = {
-          en: {
-            name: 'e.g. John Doe',
-            offer: 'e.g. 5,000 USD',
-            email: 'you@example.com',
-            msg: 'Timeline, transfer method, or any details…'
-          },
-          tr: {
-            name: 'örn. Ahmet Yılmaz',
-            offer: 'örn. 5.000 USD',
-            email: 'ornek@mail.com',
-            msg: 'Zaman çizelgesi, transfer yöntemi veya detaylar…'
-          },
-          fa: {
-            name: 'مثلاً علی رضایی',
-            offer: 'مثلاً ۵,۰۰۰ دلار',
-            email: 'شما@مثال.com',
-            msg: 'جدول زمانی، روش انتقال یا هر جزئیات…'
-          }
+        const ph = {
+          en: { name: 'e.g. John Doe', offer: 'e.g. 5,000 USD', email: 'you@example.com',
+            msg: 'Timeline, transfer method, or any details…' },
+          tr: { name: 'örn. Ahmet Yılmaz', offer: 'örn. 5.000 USD', email: 'ornek@mail.com',
+            msg: 'Zaman çizelgesi, transfer yöntemi veya detaylar…' },
+          fa: { name: 'مثلاً علی رضایی', offer: 'مثلاً ۵,۰۰۰ دلار', email: 'شما@مثال.com',
+            msg: 'جدول زمانی، روش انتقال یا هر جزئیات…' }
         };
-        const ph = placeholders[lang] || placeholders.en;
-        nameEl.placeholder = ph.name;
-        offerEl.placeholder = ph.offer;
-        emailEl.placeholder = ph.email;
-        msgEl.placeholder = ph.msg;
+        const p = ph[lang] || ph.en;
+        nameEl.placeholder = p.name;
+        offerEl.placeholder = p.offer;
+        emailEl.placeholder = p.email;
+        msgEl.placeholder = p.msg;
+
+        // update button text in case it has changed
+        const btnText = waBtn.querySelector('.btn-text');
+        if (btnText) {
+          const waKey = 'wa_button';
+          const waVal = t[lang]?.[waKey];
+          if (waVal) btnText.textContent = waVal;
+        }
       }
 
       // ── language switcher ──
       langBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          applyLanguage(this.dataset.lang);
+        btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+      });
+
+      // ── build WhatsApp message ──
+      function buildMessage() {
+        const lang = currentLang;
+        const dict = t[lang] || t.en;
+        const name = clean(nameEl.value);
+        const offer = clean(offerEl.value);
+        const email = clean(emailEl.value);
+        const extra = clean(msgEl.value);
+
+        const lines = [
+          dict.wa_intro.replace('{{domain}}', DOMAIN),
+          '',
+          dict.wa_offer_label,
+          dict.wa_name_label + ' ' + (name || dict.wa_missing_name),
+          dict.wa_amount_label + ' ' + (offer || dict.wa_missing_amount)
+        ];
+        if (email) lines.push(dict.wa_email_label + ' ' + email);
+        if (extra) lines.push(dict.wa_note_label + ' ' + extra);
+        return lines.join('\n');
+      }
+
+      // ── send WhatsApp ──
+      function sendWhatsApp() {
+        const dict = t[currentLang] || t.en;
+        const name = clean(nameEl.value);
+        const offer = clean(offerEl.value);
+
+        if (!name) {
+          showToast(dict.err_name);
+          nameEl.focus();
+          return;
+        }
+        if (!offer) {
+          showToast(dict.err_offer);
+          offerEl.focus();
+          return;
+        }
+
+        // show loading state
+        waBtn.classList.add('loading');
+        waBtn.disabled = true;
+
+        const message = buildMessage();
+        const url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(message);
+
+        // Use a small delay to show loading state, then open
+        setTimeout(() => {
+          window.open(url, '_blank');
+          waBtn.classList.remove('loading');
+          waBtn.disabled = false;
+        }, 300);
+      }
+
+      // ── copy domain ──
+      async function copyDomain() {
+        const dict = t[currentLang] || t.en;
+        try {
+          await navigator.clipboard.writeText(DOMAIN);
+          const old = copyBtn.innerHTML;
+          copyBtn.innerHTML = '✓ ' + dict.copied;
+          setTimeout(() => { copyBtn.innerHTML = old; }, 1500);
+          showToast(dict.copy_success.replace('{{domain}}', DOMAIN));
+        } catch (_) {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = DOMAIN;
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+            showToast(dict.copy_success.replace('{{domain}}', DOMAIN));
+          } catch (__) {
+            showToast(DOMAIN);
+          }
+          document.body.removeChild(ta);
+        }
+      }
+
+      // ── events ──
+      waBtn.addEventListener('click', sendWhatsApp);
+
+      copyBtn.addEventListener('click', copyDomain);
+
+      // Enter key support – submit on Enter in any form field
+      document.querySelectorAll('#offerForm input, #offerForm textarea').forEach(el => {
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && el.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            sendWhatsApp();
+          }
         });
       });
 
-      // ── initial apply ──
-      applyLanguage(currentLang);
-
-      // ── year ──
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // ── WhatsApp button ──
-      waBtn.addEventListener('click', sendWhatsApp);
-
-      // ── keyboard shortcut: Cmd/Ctrl + Enter ──
-      document.addEventListener('keydown', function(e) {
+      // Ctrl+Enter / Cmd+Enter
+      document.addEventListener('keydown', (e) => {
         if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
           const active = document.activeElement;
           if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
@@ -1105,35 +1194,12 @@
         }
       });
 
-      // ── Copy domain ──
-      copyBtn.addEventListener('click', async function() {
-        try {
-          await navigator.clipboard.writeText(DOMAIN);
-          const old = copyBtn.innerHTML;
-          copyBtn.innerHTML = '✓ Copied!';
-          setTimeout(function() {
-            copyBtn.innerHTML = old;
-          }, 1400);
-          showToast('Copied "' + DOMAIN + '" to clipboard.', 1400);
-        } catch (_) {
-          const textarea = document.createElement('textarea');
-          textarea.value = DOMAIN;
-          document.body.appendChild(textarea);
-          textarea.select();
-          try {
-            document.execCommand('copy');
-            showToast('Copied "' + DOMAIN + '" to clipboard.', 1400);
-          } catch (__) {
-            showToast('Copy: ' + DOMAIN, 1800);
-          }
-          document.body.removeChild(textarea);
-        }
-      });
+      // ── init ──
+      applyLanguage(currentLang);
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-      // ── auto-focus ──
-      setTimeout(function() {
-        nameEl.focus();
-      }, 400);
+      // focus name after a moment
+      setTimeout(() => nameEl.focus(), 500);
 
     })();
   </script>
